@@ -49,14 +49,22 @@ def FindCommonAncestor(NodeObj, val_1, val_2):
  	
 
 	# At this point, for the current node, we have three options.
+	# Both Left and Right arm have values
+	#	- This means that the current node has one value in 1 arm and the other value in the other arm.
+	# 	- In this case, return current node as the parent.
+	# The left arm has a value, and the right arm is None.
+	# 	- In this case, we have found one of the values in the lest side of the sub-tree.
+	#	- We return value of left arm as the value to pass up the recursion.
+	# The left arm is None, the right arm is either None or has a vlaye.
+	#	- In this case, we return the vlaue of the right arm.
 	if LeftArm and RightArm:
 		return NodeObj 
  
-	# Otherwise check if left subtree or right subtree is LCA
 	return LeftArm if LeftArm is not None else RightArm
  
  
- 
+#########################################################
+# Creating a tree for testing. 
 root = Node(1)
 root.left = Node(2)
 root.right = Node(7)
